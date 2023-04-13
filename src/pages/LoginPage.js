@@ -20,11 +20,8 @@ function LoginPage(props) {
     const requestBody = { email, password };
 
     //axios.post(`${API_URL}/auth/login`, requestBody)
-    authService
-      .login(requestBody)
+    authService.login(requestBody)
       .then((response) => {
-        // Request to the server's endpoint `/auth/login` returns a response
-        // with the JWT string ->  response.data.authToken
         console.log("JWT token", response.data.authToken);
         storeToken(response.data.authToken);
         authenticateUser();
@@ -42,7 +39,12 @@ function LoginPage(props) {
 
       <form onSubmit={handleLoginSubmit}>
         <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+        <input 
+          type="email" 
+          name="email" 
+          value={email} 
+          onChange={handleEmail} 
+        />
 
         <label>Password:</label>
         <input

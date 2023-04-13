@@ -19,14 +19,8 @@ function App() {
         <Route path="/spot" element={<IsPrivate> <SpotPage /> </IsPrivate>} />
         <Route path="/collection" element={<CollectionListPage />} />
         {/* <Route path="/collection/edit/:collectionId" element={<IsPrivate> <CollectionPage /> </IsPrivate>} /> */}
-        <Route
-          path="/signup"
-          element={
-            <IsAnon>
-              <SignupPage />
-            </IsAnon>
-          }
-        />
+        
+        <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
         <Route
           path="/login"
           element={

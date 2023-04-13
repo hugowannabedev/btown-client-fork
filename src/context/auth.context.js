@@ -1,14 +1,53 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import authService from "../services/auth.service";
 const AuthContext = React.createContext();
 
 function AuthProviderWrapper(props) {
-  const [isLoggedIn] = useState(false);
-  const [isLoading] = useState(true);
-  const [user] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  const storeToken = (token) => {
+    localStorage.setItem('authToken', token);
+  }
+
+  const authenticateUser = () => {
+    const storedToken = localStorage.getItem('authToken');
+
+    if (storedToken) { //server's verification for JWT
+      authService.verify()
+        .then((response) => {
+          const user = response.data;
+            setIsLoggedIn(true);
+            setIsLoading(false);
+            setUser(user);
+        })
+        .catch((error) => {
+          setIsLoggedIn(false);
+          setIsLoading(false);
+          setUser(null);
+        })
+    } else {
+        setIsLoggedIn(false);
+        setIsLoading(false);
+        setUser(null);
+    }
+  }
+
+  useEffect(() => {
+    authenticateUser();
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, isLoading, user }}>
+    <AuthContext.Provider 
+      value={{ 
+        isLoggedIn, 
+        isLoading, 
+        user,
+        storeToken,
+        authenticateUser 
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
