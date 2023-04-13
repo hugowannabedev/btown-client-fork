@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
+import SpotPage from "./pages/SpotPage";
+import CollectionListPage from "./pages/CollectionListPage";
+import IsPrivate from "./components/IsPrivate";
+import IsAnon from "./components/IsAnon";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/spot" element={<IsPrivate> <SpotPage /> </IsPrivate>} />
+        <Route path="/collection" element={<CollectionListPage />} />
+        {/* <Route path="/collection/edit/:collectionId" element={<IsPrivate> <CollectionPage /> </IsPrivate>} /> */}
+        <Route
+          path="/signup"
+          element={
+            <IsAnon>
+              <SignupPage />
+            </IsAnon>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <IsAnon>
+              <LoginPage />
+            </IsAnon>
+          }
+        />
+      </Routes>
     </div>
   );
 }
