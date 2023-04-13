@@ -21,14 +21,7 @@ function App() {
         {/* <Route path="/collection/edit/:collectionId" element={<IsPrivate> <CollectionPage /> </IsPrivate>} /> */}
         
         <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
-        <Route
-          path="/login"
-          element={
-            <IsAnon>
-              <LoginPage />
-            </IsAnon>
-          }
-        />
+        <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
       </Routes>
     </div>
   );

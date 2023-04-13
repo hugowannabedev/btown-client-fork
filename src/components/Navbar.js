@@ -17,35 +17,26 @@ function Navbar() {
         <button>Home</button>
       </Link>
 
-      {isLoggedIn && (
-        <>
-          <Link to="/collection">
-            <button>Collections</button>
-          </Link>
-          <button onClick={logOutUser}>Logout</button>
-          <span>{user && user.name}</span>
-        </>
-      )}
+      <Link to="/collection">
+        <button>Collections</button>
+      </Link>
+
       {isLoggedIn && (
         <>
           <Link to="/spot">
             <button>Spots</button>
           </Link>
+
           <button onClick={logOutUser}>Logout</button>
-          <span>{user && user.name}</span>
+          <span>*Welcome {user && user.name}*</span>
         </>
       )}
+      
 
       {!isLoggedIn && (
         <>
-          <Link to="/signup">
-            {" "}
-            <button>Sign Up</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button>Login</button>{" "}
-          </Link>
+          <Link to="/signup"> <button>Sign Up</button> </Link>
+          <Link to="/login"> <button>Login</button> </Link>
         </>
       )}
     </nav>
