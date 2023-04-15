@@ -53,8 +53,8 @@ function LoginPage(props) {
           value={password}
           onChange={handlePassword}
         />
-
-        <button type="submit">Login</button>
+        {/* This {" "} adds an empty space between the button*/}
+        {" "}<button type="submit">Login</button> 
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 

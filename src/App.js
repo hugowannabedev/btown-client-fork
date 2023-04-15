@@ -16,7 +16,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/spot" element={<IsPrivate> <SpotPage /> </IsPrivate>} />
+        <Route path="/spots" element={<SpotPage />} />
         <Route path="/collection" element={<CollectionListPage />} />
         {/* <Route path="/collection/edit/:collectionId" element={<IsPrivate> <CollectionPage /> </IsPrivate>} /> */}
         
