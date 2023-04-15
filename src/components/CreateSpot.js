@@ -1,4 +1,4 @@
-/* import { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const API_URL = "http://localhost:5005";
@@ -25,7 +25,7 @@ function CreateSpot({ refreshSpots }) {
     };
 
     axios
-      .post(`${API_URL}/api/spots`, data)
+      .post(`${API_URL}/spots`, data)
       .then(() => {
         setName("");
         setDescription("");
@@ -50,4 +50,4 @@ function CreateSpot({ refreshSpots }) {
   );
 }
 
-export default CreateSpot; */
+export default CreateSpot;

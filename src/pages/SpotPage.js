@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import CreateSpot from "../components/CreateSpot";
 //import SpotCard from "../components/SpotCard";
 
 
@@ -21,6 +22,9 @@ function SpotPage() {
   return (
     <div>
       <h1>All Spots</h1>
+
+      <CreateSpot refreshSpots={getAllSpots} />  
+
       {spots.map((spot) => (
         <div key={spot._id}>
           <h2>{spot.title}</h2>
