@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
@@ -8,6 +9,8 @@ function CreateSpot({ refreshSpots }) {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   //const [image, setImage] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +29,7 @@ function CreateSpot({ refreshSpots }) {
         setCategory("");
         //setImage("");
         refreshSpots();
+        navigate("/myspots");
       })
       .catch((error) => console.log(error));
   };

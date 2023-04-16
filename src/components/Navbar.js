@@ -35,7 +35,11 @@ function Navbar() {
 
           <button onClick={logOutUser}>Logout</button> 
           <br />
+          <hr />
           <span>*Welcome {user && user.name}*</span>
+          <Link to="/myspots"> 
+            <button>My Spots</button>{" "}
+          </Link>
         </>
       )}
       
