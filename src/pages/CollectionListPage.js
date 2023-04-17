@@ -1,5 +1,50 @@
+import axios from "axios";
+import CreateCollection from "../components/CreateCollection";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/auth.context";
+
+
+
+const API_URL = "http://localhost:5005";
+
 function CollectionList() {
-  return <h1>Navigate through other user's Collections</h1>;
+  const [collection, setCollection] = useState([]);
+
+  const { isLoggedIn, user } = useContext(AuthContext)
+
+  useEffect(() => {
+    getMyCollections(user._id);
+  }, []);
+
+  const getMyCollections = () => {
+    axios.get(`${API_URL}/collection`)
+      .then((response) => setCollection(response.data))
+      .catch((error) => console.log(error));
+  };
+
+  return (
+    <div>
+
+      {isLoggedIn && (
+        <>
+          <h1>My Collections</h1>
+          <CreateCollection refreshCollections={getMyCollections} />
+
+          {collection.map((collection) => (
+            <div key={collection._id}>
+              <h2>{collection.name}</h2>
+              <p>{collection.description}</p>
+            </div>
+          ))}
+        </>
+      )}
+        
+
+    </div>
+    
+  )
+
+
 }
 
 export default CollectionList;

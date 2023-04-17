@@ -25,9 +25,7 @@ function Navbar() {
             <button>Spots</button>{" "}
       </Link>
 
-      <Link to="/collection">  
-            <button>Collections</button>
-      </Link>
+      
       
 
       {isLoggedIn && (
@@ -37,8 +35,8 @@ function Navbar() {
           <br />
           <hr />
           <span>*Welcome {user && user.name}*</span>
-          <Link to="/myspots"> 
-            <button>My Spots</button>{" "}
+          <Link to="/collection">  
+            <button>Collections</button>
           </Link>
         </>
       )}

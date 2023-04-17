@@ -23,13 +23,16 @@ function CreateSpot({ refreshSpots }) {
       requestBody, 
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
-      .then(() => {
+      .then((response) => {
+        const createdSpot = response.data
+
         setName("");
         setDescription("");
         setCategory("");
         //setImage("");
         refreshSpots();
-        navigate("/myspots");
+        //navigate("/collection");
+        return createdSpot
       })
       .catch((error) => console.log(error));
   };
@@ -41,7 +44,7 @@ function CreateSpot({ refreshSpots }) {
         <label htmlFor="name">Name:</label>
         <input 
           type="text"
-          id="name"
+          name="name"
           value={name}
           onChange={(event) => setName(event.target.value)} 
         />
@@ -51,7 +54,7 @@ function CreateSpot({ refreshSpots }) {
         <label htmlFor="description">Description:</label>
         <textarea 
           type="text"
-          id="name"
+          name="description"
           value={description}
           onChange={(event) => setDescription(event.target.value)} 
         ></textarea>
@@ -61,7 +64,7 @@ function CreateSpot({ refreshSpots }) {
         <label htmlFor="category">Category:</label>
         <select 
           id="category" 
-          value={category} 
+          name ="category" 
           onChange={(event) => setCategory(event.target.value)}
         >
           <option value="">-Select a category-</option>
