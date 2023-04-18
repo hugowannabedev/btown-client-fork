@@ -5,10 +5,10 @@ function HomePage() {
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto' }}>
       <br />
-      <h1>From mouthwatering cuisine to mesmerizing viewpoints...</h1>
-      <h1>- Uncover Hong Kong's hidden gems -</h1>
+      <h2>From mouthwatering cuisine to mesmerizing viewpoints...</h2>
+      <h2>- Uncover Hong Kong's hidden gems -</h2>
       <hr />
-      <Carousel interval={2000}>
+      <Carousel interval={3000}>
         <Carousel.Item>
           <img
             style={{ height: '500px', width: '800px' }}
@@ -40,18 +40,3 @@ function HomePage() {
 export default HomePage;
 
 
-/* function HomePage() {
-  return (
-    <div>
-
-      <h1>From mouthwatering cuisine to mesmerizing viewpoints...</h1>
-      <h1>- Uncover Hong Kong's hidden gems -</h1>
-    
-      
-  </div>
-  )
-};
-
-
-export default HomePage;
- */

@@ -12,17 +12,23 @@ function CollectionList() {
 
   const { isLoggedIn, user } = useContext(AuthContext)
 
-  useEffect(() => {
-    getMyCollections();
-  }, []);
+  const storedToken = localStorage.getItem('authToken');
+
+
+  
 
   const getMyCollections = () => {
-    axios.get(`${API_URL}/collection`)
-    //axios.get(`${API_URL}/collection?userId=${user._id}`)
-      .then((response) => setCollection(response.data))
+    axios.get(`${API_URL}/collection/mycollection`, { headers: { Authorization: `Bearer ${storedToken}` }})
+       
+      .then((response) => {
+        console.log("give me BILL")
+        setCollection(response.data)})
+
       .catch((error) => console.log(error));
   };
-
+useEffect(() => {
+    getMyCollections();
+  }, []);
   return (
     <div>
 

@@ -54,9 +54,8 @@ function CreateCollection({ refreshCollections }) {
             <button type="submit">Create a Collection</button>
         </form>
     )
-
-
 }
 
-
 export default CreateCollection
+
+
