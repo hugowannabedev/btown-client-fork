@@ -13,11 +13,12 @@ function CollectionList() {
   const { isLoggedIn, user } = useContext(AuthContext)
 
   useEffect(() => {
-    getMyCollections(user._id);
+    getMyCollections();
   }, []);
 
   const getMyCollections = () => {
     axios.get(`${API_URL}/collection`)
+    //axios.get(`${API_URL}/collection?userId=${user._id}`)
       .then((response) => setCollection(response.data))
       .catch((error) => console.log(error));
   };
