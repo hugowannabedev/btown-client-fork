@@ -42,6 +42,16 @@ function CollectionDetailsPage(props) {
         navigate(`/collection`)
       });
   };
+
+  const deleteCollection = () =>{
+ 
+    axios
+    .delete(`${API_URL}/collection/${collectionId}`, { headers: { Authorization: `Bearer ${storedToken}`}})
+    .then(() => {
+        navigate(`/collection`)
+    })
+
+};
   
   return (
     <div className="CollectionDetailsPage">
@@ -64,7 +74,7 @@ function CollectionDetailsPage(props) {
         />
  
         <button type="submit">Update Collection</button>
-        
+        <button onClick={deleteCollection}>Delete</button>
       </form>
 
       { spots.map(spot => (
