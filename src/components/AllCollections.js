@@ -22,12 +22,14 @@ function AllCollections() {
 
   return (
     <div>
-      <h1>All Collections</h1>
+      <h1 className="fw-light">All Collections</h1>
+      <hr />
       {collections.map((collection) => (
         <div key={collection._id}>
           <br />
           <h2>{collection.name}</h2>
           <p>{collection.description}</p>
+          
         </div>
       ))}
     </div>

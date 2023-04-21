@@ -78,7 +78,9 @@ function SpotPage() {
           // input hidden spot._id 
           // button submit */}
 
+          {isLoggedIn && (
           <button type="submit" onClick={() => { setShowForm(true); setSpotId(spot._id)}}>Add to collection</button>
+          )}
           {showForm && (
             <form onSubmit={addToCollection}>
               <select
@@ -115,75 +117,3 @@ export default SpotPage;
 
 
 
-{/* import { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import CreateSpot from "../components/CreateSpot";
-import { AuthContext } from "../context/auth.context";
-//import SpotCard from "../components/SpotCard";
-
-
-const API_URL = "http://localhost:5005";
-
-function SpotPage() {
-  const [spots, setSpots] = useState([]);
-  const [collection, setCollection] = useState([]);
-
-  const {isLoggedIn } = useContext(AuthContext)
-  const storedToken = localStorage.getItem('authToken');
-
-  useEffect(() => {
-    getAllSpots();
-  }, []);
-
-  const getAllSpots = () => {
-    axios.get(`${API_URL}/spots`)
-      .then((response) => setSpots(response.data))
-      .catch((error) => console.log(error));
-  };
-  //To add spots to the collection
-  const addToCollection = (collectionId, spotId) => {
-    axios.put(`${API_URL}/collection/${collectionId}/${spotId}`, {
-      headers: { Authorization: `Bearer ${storedToken}` },
-    })
-    .then((response) => setSpots(response.data))
-    .catch((error) => console.log(error));
-  }
-
-  useEffect(() => {
-    getMyCollections();
-  }, []);
-
-  const getMyCollections = () => {
-    
-    axios.get(`${API_URL}/collection/mycollection`, { 
-      headers: { Authorization: `Bearer ${storedToken}` }
-    })
-       
-      .then((response) => setCollection(response.data))
-      .catch((error) => console.log(error));
-  };
-
-
-  return (
-    <div>
-      <h1>All Spots</h1>
-      
-      {isLoggedIn && (
-        <>
-            <CreateSpot refreshSpots={getAllSpots} />
-        </>
-      )}
-  
-      {spots.map((spot) => (
-        <div key={spot._id}>
-          <h2>{spot.name}</h2>
-          <p>{spot.description}</p>
-          <p>{spot.category}</p>
-          <img src={spot.image} alt={spot.name} />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export default SpotPage; */}

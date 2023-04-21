@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import authService from "../services/auth.service";
+import { Form, Button, Card } from "react-bootstrap";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
@@ -34,33 +35,40 @@ function LoginPage(props) {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
+    <Card className="w-50 p-4 mx-auto mt-5">
+      <h1 className="text-center mb-4">Login</h1>
 
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input 
-          type="email" 
-          name="email" 
-          value={email} 
-          onChange={handleEmail} 
-        />
+      <Form onSubmit={handleLoginSubmit}>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={handleEmail}
+          />
+        </Form.Group>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-        {/* This {" "} adds an empty space between the button*/}
-        {" "}<button type="submit">Login</button> 
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePassword}
+          />
+        </Form.Group>
+        <hr />
+        <Button variant="primary" type="submit" block>
+          Confirm
+        </Button>
+      </Form>
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up here</Link>
-    </div>
+      {errorMessage && <p className="error-message mt-3">{errorMessage}</p>}
+
+      <p className="text-center mt-3">Don't have an account yet?</p>
+      <Link to={"/signup"} className="d-block text-center">Sign Up here</Link>
+    </Card>
   );
 }
 

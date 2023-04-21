@@ -8,7 +8,7 @@ function CreateSpot({ refreshSpots }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  //const [image, setImage] = useState("");
+  const [image, setImage] = useState("");
 
   const navigate = useNavigate();
 
@@ -29,9 +29,9 @@ function CreateSpot({ refreshSpots }) {
         setName("");
         setDescription("");
         setCategory("");
-        //setImage("");
+        setImage("");
         refreshSpots();
-        //navigate("/collection");
+        navigate("/collection");
         return createdSpot
       })
       .catch((error) => console.log(error));
@@ -74,15 +74,18 @@ function CreateSpot({ refreshSpots }) {
         </select>
       </div>
 
-      {/* <div>
+      <div>
         <label htmlFor="image">Image:</label>
         <input 
-          type="text" 
+          type="file" 
           id="image"
           value={image}
-          onChange={(event) => setImage(event.target.value)}  
+          onChange={(event) => {
+            const file = event.target.files[0];
+            setImage(file);
+          }}  
         />
-      </div> */}
+      </div>
       <br />
       <button type="submit">Create a Spot</button>
     </form>
